@@ -78,7 +78,6 @@ const Home = ({
     combineMoviesAndTVShowsByCategory();
   }, [categorie, moviesByGenres, tvShowsByGenres]);
 
-  // Funzione per ottenere un sottoinsieme casuale dell'array, massimo 11 elementi
   const getRandomSubset = (array, size) => {
     const shuffled = array.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, Math.min(array.length, size));

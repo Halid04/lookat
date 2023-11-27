@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import GenresPage from "./pages/GenresPage";
 import SideBar from "./components/SideBar";
+import WatchList from "./pages/WatchList";
+import Account from "./pages/Account";
 
 const App = () => {
   const [popularContent, setPopularContent] = useState([]);
@@ -164,7 +166,18 @@ const App = () => {
           }}
         >
           <Routes>
-            <Route index element={<Home popularContent={popularContent} />} />
+            <Route
+              index
+              element={
+                <Home
+                  popularContent={popularContent}
+                  moviesGenres={moviesGenres}
+                  tVShowsGenres={tVShowsGenres}
+                  moviesByGenres={moviesByGenres}
+                  tvShowsByGenres={tVShowsByGenres}
+                />
+              }
+            />
             <Route
               exact
               path="/home"
@@ -189,6 +202,8 @@ const App = () => {
                 />
               }
             />
+            <Route path="/watchList" element={<WatchList />} />
+            <Route path="/account" element={<Account />} />
           </Routes>
         </div>
       </div>
@@ -197,59 +212,3 @@ const App = () => {
 };
 
 export default App;
-
-/* <button
-        onClick={() => {
-          console.log("10 Film e Serie Tv popolari", popularContent);
-        }}
-      >
-        Trending Content
-      </button>
-
-      <button
-        onClick={() => {
-          console.log("Categorie Film", moviesGenres);
-        }}
-      >
-        Movies Genres
-      </button>
-
-      <button
-        onClick={() => {
-          console.log("Categorie ogni Film", moviesByGenres);
-        }}
-      >
-        Movies By Genres
-      </button>
-
-      <button
-        onClick={() => {
-          console.log("Top Categorie ogni Film", topMoviesByGenres);
-        }}
-      >
-        Top Movies By Genres
-      </button>
-
-      <button
-        onClick={() => {
-          console.log("Categorie Serie TV", tVShowsGenres);
-        }}
-      >
-        TV Shows Genres
-      </button>
-
-      <button
-        onClick={() => {
-          console.log("Categorie ogni Serie TV", tVShowsByGenres);
-        }}
-      >
-        TV Shows By Genres
-      </button>
-
-      <button
-        onClick={() => {
-          console.log("Top Categorie ogni Serie TV", topTvShowsByGenres);
-        }}
-      >
-        Top TV Shows By Genres
-      </button> */

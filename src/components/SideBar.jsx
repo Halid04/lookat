@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SideBar = ({ filmCategorie, serieCategorie, changeTheme, theme }) => {
-  const [categorie, setCategorie] = useState();
+  const [categorie, setCategorie] = useState(null);
   const [selectedGenreId, setSelectedGenreId] = useState(null);
 
   useEffect(() => {
@@ -50,7 +50,13 @@ const SideBar = ({ filmCategorie, serieCategorie, changeTheme, theme }) => {
         }}
       ></Link>
       <div className="accountWhatchListWrap">
-        <div className="watchListLinkContainer">
+        <Link
+          to={`/watchList`}
+          className="watchListLinkContainer"
+          style={{
+            textDecoration: "none",
+          }}
+        >
           <div
             className="watchListIcon"
             style={{
@@ -69,8 +75,15 @@ const SideBar = ({ filmCategorie, serieCategorie, changeTheme, theme }) => {
           >
             WatchList
           </p>
-        </div>
-        <div className="accountLinkContainer">
+        </Link>
+
+        <Link
+          to={`/account`}
+          className="accountLinkContainer"
+          style={{
+            textDecoration: "none",
+          }}
+        >
           <div
             className="accountIcon"
             style={{
@@ -89,7 +102,7 @@ const SideBar = ({ filmCategorie, serieCategorie, changeTheme, theme }) => {
           >
             Account
           </p>
-        </div>
+        </Link>
       </div>
 
       <div className="categorieWrap">
