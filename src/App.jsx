@@ -164,8 +164,20 @@ const App = () => {
           }}
         >
           <Routes>
-            <Route index element={<Home />} />
-            <Route exact path="/home" element={<Home />} />
+            <Route index element={<Home popularContent={popularContent} />} />
+            <Route
+              exact
+              path="/home"
+              element={
+                <Home
+                  popularContent={popularContent}
+                  moviesGenres={moviesGenres}
+                  tVShowsGenres={tVShowsGenres}
+                  moviesByGenres={moviesByGenres}
+                  tvShowsByGenres={tVShowsByGenres}
+                />
+              }
+            />
             <Route
               path="/genre/:genreId"
               element={

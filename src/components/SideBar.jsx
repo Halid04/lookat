@@ -14,20 +14,16 @@ const SideBar = ({ filmCategorie, serieCategorie, changeTheme, theme }) => {
         serieCategorie.genres &&
         serieCategorie.genres.length > 0
       ) {
-        console.log("Categorie film:", filmCategorie);
-        console.log("Categorie serie TV:", serieCategorie);
+        // console.log("Categorie film:", filmCategorie);
+        // console.log("Categorie serie TV:", serieCategorie);
         const combinedGenres = [
           ...filmCategorie.genres,
           ...serieCategorie.genres,
         ];
 
-        const uniqueGenres = combinedGenres.reduce((acc, genre) => {
-          const found = acc.find((item) => item.id === genre.id);
-          if (!found) {
-            acc.push(genre);
-          }
-          return acc;
-        }, []);
+        const uniqueGenres = Array.from(
+          new Map(combinedGenres.map((genre) => [genre.id, genre])).values()
+        );
 
         setCategorie(uniqueGenres);
       }
