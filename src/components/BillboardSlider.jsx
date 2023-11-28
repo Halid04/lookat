@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const BillboardSlider = ({ popularContent }) => {
+const BillboardSlider = ({ popularContent, theme }) => {
   const [popularContentPoster, setPopularContentPoster] = useState(null);
   const options = {
     method: "GET",
@@ -40,28 +43,49 @@ const BillboardSlider = ({ popularContent }) => {
     getPosterImage();
   }, [popularContent]);
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 700,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+  };
+
   return (
-    <div>
-      {popularContentPoster && popularContentPoster.length > 0
-        ? popularContentPoster.map((item) => {
+    <div className={`sliderSlick ${theme ? "darkTheme" : "lightTheme"}`}>
+      {popularContentPoster && popularContentPoster.length > 0 ? (
+        <Slider {...settings}>
+          {popularContentPoster.map((item) => {
             return (
-              <div
-                className="billboardPoster"
-                key={item.id}
-                style={{
-                  backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.backdrop.file_path})`,
-                }}
-              >
+              <div className="billboardPosterWrap" key={item.id}>
                 <div
-                  className="posterLogo"
+                  className="bgBillboardPoster"
                   style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.logo.file_path})`,
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.backdrop.file_path})`,
                   }}
                 ></div>
+                <div
+                  className="billboardPoster"
+                  style={{
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.backdrop.file_path})`,
+                  }}
+                >
+                  <div
+                    className="posterLogo"
+                    style={{
+                      backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.logo.file_path})`,
+                    }}
+                  ></div>
+                </div>
               </div>
             );
-          })
-        : "Loading.."}
+          })}
+        </Slider>
+      ) : (
+        "Loading..."
+      )}
     </div>
   );
 };

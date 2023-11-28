@@ -176,6 +176,7 @@ const App = () => {
                   tVShowsGenres={tVShowsGenres}
                   moviesByGenres={moviesByGenres}
                   tvShowsByGenres={tVShowsByGenres}
+                  theme={darkTheme}
                 />
               }
             />
@@ -189,6 +190,7 @@ const App = () => {
                   tVShowsGenres={tVShowsGenres}
                   moviesByGenres={moviesByGenres}
                   tvShowsByGenres={tVShowsByGenres}
+                  theme={darkTheme}
                 />
               }
             />

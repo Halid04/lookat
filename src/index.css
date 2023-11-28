@@ -16,6 +16,14 @@
   --text-hover-color-light-theme: #101010b8;
 }
 
+.lightTheme {
+  --dots-color: var(--secondary-color-light-theme);
+}
+
+.darkTheme {
+  --dots-color: var(--secondary-color-dark-theme);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -183,30 +191,83 @@ body {
 
 .temp {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   color: var(--text-color-dark-theme);
   background-color: var(--bg-dark-color);
   overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   transition: 0.2s;
+}
+
+.billboardPosterWrap {
+  width: 78.5vw;
+  height: 55vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgBillboardPoster {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px) brightness(0.5);
+  transform: scale(1.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .billboardPoster {
   background-size: contain;
   background-repeat: no-repeat;
-  width: 40vw;
-  height: 40vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: end;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 .posterLogo {
-  width: 19vw;
-  height: 7vw;
+  width: 25%;
+  height: 25%;
   background-size: contain;
   background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(5%, -5%);
+}
+
+.sliderSlick {
+  width: 78.5vw;
+  height: 55vh;
+}
+
+.slick-prev {
+  left: 3% !important;
+  z-index: 1;
+}
+.slick-next {
+  right: 5% !important;
+  z-index: 1;
+}
+.slick-prev:before,
+.slick-next:before {
+  color: var(--dots-color);
+}
+.slick-dots li.slick-active button:before {
+  color: var(--dots-color);
+}
+.slick-dots li button:before {
+  color: var(--dots-color);
 }

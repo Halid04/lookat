@@ -7,6 +7,7 @@ const Home = ({
   tVShowsGenres,
   moviesByGenres,
   tvShowsByGenres,
+  theme,
 }) => {
   const [categorie, setCategorie] = useState([]);
   const [contentByGenres, setContentByGenres] = useState({});
@@ -86,27 +87,8 @@ const Home = ({
 
   return (
     <div>
-      <BillboardSlider popularContent={popularContent} />
-      {/* <div>
-        <h1>Film e serie popolari</h1>
-        {popularContent &&
-          popularContent.map((item, index) => {
-            let content = "";
-            let contentID = item.id;
-            if (item.media_type === "movie") {
-              content = item.title;
-            } else if (item.media_type === "tv") {
-              content = item.name;
-            }
+      <BillboardSlider popularContent={popularContent} theme={theme} />
 
-            return (
-              <p key={index}>
-                {item.media_type === "movie" ? item.title : item.name},{" "}
-                {contentID}
-              </p>
-            );
-          })}
-      </div>
       <div>
         {categorie.map((category) => (
           <div key={category.id}>
@@ -123,7 +105,7 @@ const Home = ({
               )}
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };
