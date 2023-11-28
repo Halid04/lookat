@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import BillboardSlider from "../components/BillboardSlider";
 
 const Home = ({
   popularContent,
@@ -85,18 +86,25 @@ const Home = ({
 
   return (
     <div>
-      <div>
+      <BillboardSlider popularContent={popularContent} />
+      {/* <div>
         <h1>Film e serie popolari</h1>
         {popularContent &&
           popularContent.map((item, index) => {
             let content = "";
+            let contentID = item.id;
             if (item.media_type === "movie") {
               content = item.title;
             } else if (item.media_type === "tv") {
               content = item.name;
             }
 
-            return <p key={index}>{content}</p>;
+            return (
+              <p key={index}>
+                {item.media_type === "movie" ? item.title : item.name},{" "}
+                {contentID}
+              </p>
+            );
           })}
       </div>
       <div>
@@ -115,7 +123,7 @@ const Home = ({
               )}
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

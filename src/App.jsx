@@ -66,6 +66,7 @@ const App = () => {
             : (topTVShows = trendingTVShows);
 
           setPopularContent([...topMovies, ...topTVShows]);
+          // console.log([...topMovies, ...topTVShows]);
         })
         .catch((err) => console.error(err));
     };
