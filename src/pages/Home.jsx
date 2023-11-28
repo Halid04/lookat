@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BillboardSlider from "../components/BillboardSlider";
+import NavBar from "../components/NavBar";
 
 const Home = ({
   popularContent,
@@ -87,6 +88,7 @@ const Home = ({
 
   return (
     <div>
+      {/* <NavBar theme={theme} /> */}
       <BillboardSlider popularContent={popularContent} theme={theme} />
 
       <div>

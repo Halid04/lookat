@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 const BillboardSlider = ({ popularContent, theme }) => {
   const [popularContentPoster, setPopularContentPoster] = useState(null);
@@ -59,7 +60,11 @@ const BillboardSlider = ({ popularContent, theme }) => {
         <Slider {...settings}>
           {popularContentPoster.map((item) => {
             return (
-              <div className="billboardPosterWrap" key={item.id}>
+              <Link
+                to={`/content/${item.id}`}
+                className="billboardPosterWrap"
+                key={item.id}
+              >
                 <div
                   className="bgBillboardPoster"
                   style={{
@@ -79,7 +84,7 @@ const BillboardSlider = ({ popularContent, theme }) => {
                     }}
                   ></div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </Slider>

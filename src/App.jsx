@@ -5,6 +5,8 @@ import GenresPage from "./pages/GenresPage";
 import SideBar from "./components/SideBar";
 import WatchList from "./pages/WatchList";
 import Account from "./pages/Account";
+import NavBar from "./components/NavBar";
+import Content from "./pages/Content";
 
 const App = () => {
   const [popularContent, setPopularContent] = useState([]);
@@ -15,6 +17,23 @@ const App = () => {
   const [tVShowsByGenres, setTVShowsByGenres] = useState([]);
   const [topTvShowsByGenres, setTopTvShowsByGenres] = useState([]);
   const [darkTheme, setDarkTheme] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const breakpoint = 700;
+
+  const handleWindowResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+
+    // Pulizia dell'event listener al momento del unmount del componente
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  const isMobile = windowWidth < breakpoint;
 
   const changeTheme = () => {
     setDarkTheme(!darkTheme);
@@ -148,12 +167,16 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="container">
-        <SideBar
-          filmCategorie={moviesGenres}
-          serieCategorie={tVShowsGenres}
-          changeTheme={changeTheme}
-          theme={darkTheme}
-        />
+        {isMobile ? (
+          <NavBar theme={darkTheme} />
+        ) : (
+          <SideBar
+            filmCategorie={moviesGenres}
+            serieCategorie={tVShowsGenres}
+            changeTheme={changeTheme}
+            theme={darkTheme}
+          />
+        )}
 
         <div
           className="temp"
@@ -205,6 +228,7 @@ const App = () => {
                 />
               }
             />
+            <Route path="/content/:contentId" element={<Content />} />
             <Route path="/watchList" element={<WatchList />} />
             <Route path="/account" element={<Account />} />
           </Routes>
