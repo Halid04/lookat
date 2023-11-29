@@ -51,7 +51,7 @@ const BillboardSlider = ({ popularContent, theme }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
   };
 
   return (
@@ -89,7 +89,18 @@ const BillboardSlider = ({ popularContent, theme }) => {
           })}
         </Slider>
       ) : (
-        "Loading..."
+        <div className="main-item">
+          <div
+            className="animated-background"
+            style={{
+              background: theme
+                ? "linear-gradient(to right, #ef3340 8%, #ef3340 18%, #101010 33%)"
+                : "linear-gradient(to right, #444ce7 8%, #444ce7 18%, #ffffff 33%)",
+            }}
+          >
+            <div className="background-masker"></div>
+          </div>
+        </div>
       )}
     </div>
   );

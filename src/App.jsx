@@ -228,7 +228,10 @@ const App = () => {
                 />
               }
             />
-            <Route path="/content/:contentId" element={<Content />} />
+            <Route
+              path="/content/:contentId"
+              element={<Content popularContent={popularContent} />}
+            />
             <Route path="/watchList" element={<WatchList />} />
             <Route path="/account" element={<Account />} />
           </Routes>
