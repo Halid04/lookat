@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import BillboardSlider from "../components/BillboardSlider";
 import NavBar from "../components/NavBar";
+import ContentCard from "../components/contentCard";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 const Home = ({
   popularContent,
@@ -44,6 +49,7 @@ const Home = ({
         tvShowsByGenres.length > 0
       ) {
         const contentByCategory = {};
+        // console.log(moviesByGenres);
 
         categorie.forEach((category) => {
           const moviesInCategory =
@@ -74,6 +80,7 @@ const Home = ({
           }
         });
 
+        // console.log("cbc", contentByCategory);
         setContentByGenres(contentByCategory);
       }
     };
@@ -86,25 +93,73 @@ const Home = ({
     return shuffled.slice(0, Math.min(array.length, size));
   };
 
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 700,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+  };
+
   return (
     <div>
-      {/* <NavBar theme={theme} /> */}
       <BillboardSlider popularContent={popularContent} theme={theme} />
 
-      <div>
+      <div className={`sliderRow ${theme ? "darkTheme" : "lightTheme"}`}>
         {categorie.map((category) => (
           <div key={category.id}>
-            <h2>{category.name}</h2>
+            <Link
+              to={`/genre/${category.id}`}
+              style={{
+                textDecoration: "none",
+                color: theme
+                  ? "var(--text-color-dark-theme)"
+                  : "var(--text-color-light-theme)",
+                transition: "0.2s",
+              }}
+            >
+              <h2 className="categoryName" style={{ marginLeft: "1rem" }}>
+                {category.name}{" "}
+                <span
+                  style={{
+                    color: theme
+                      ? "var(--secondary-color-dark-theme)"
+                      : "var(--secondary-color-light-theme)",
+                  }}
+                >
+                  {">"}
+                </span>
+              </h2>
+            </Link>
+
             {contentByGenres[category.id] &&
-              contentByGenres[category.id].contents && (
-                <ul>
-                  {contentByGenres[category.id].contents.map((item, index) => (
-                    <li key={index}>
-                      {item.title || item.name}, {item.title ? "film" : "serie"}
-                    </li>
-                  ))}
-                </ul>
-              )}
+            contentByGenres[category.id].contents ? (
+              <Slider {...settings}>
+                {contentByGenres[category.id].contents.map((item, index) => (
+                  <ContentCard
+                    key={index}
+                    theme={theme}
+                    poster={
+                      item.backdrop_path
+                        ? `https://image.tmdb.org/t/p/original/${item.backdrop_path}`
+                        : `https://image.tmdb.org/t/p/original/${item.poster_path}`
+                    }
+                    valutazione={item.vote_average}
+                    annoUscita={
+                      item.release_date
+                        ? new Date(item.release_date).getFullYear()
+                        : item.first_air_date
+                        ? new Date(item.first_air_date).getFullYear()
+                        : new Date().getFullYear()
+                    }
+                    genere={category.name}
+                    contentID={item.id}
+                  />
+                ))}
+              </Slider>
+            ) : (
+              <div className="sliderLoading"></div>
+            )}
           </div>
         ))}
       </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import GenresPage from "./pages/GenresPage";
 import SideBar from "./components/SideBar";
 import WatchList from "./pages/WatchList";
@@ -18,6 +18,8 @@ const App = () => {
   const [topTvShowsByGenres, setTopTvShowsByGenres] = useState([]);
   const [darkTheme, setDarkTheme] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [movies, setMovies] = useState([]);
+  const [tvShows, setTvShows] = useState([]);
   const breakpoint = 700;
 
   const handleWindowResize = () => {
@@ -114,6 +116,7 @@ const App = () => {
         });
 
         const moviesByGenres = await Promise.all(genrePromises);
+        setMovies(moviesByGenres);
 
         moviesByGenres.length > 11
           ? setTopMoviesByGenres(moviesByGenres.slice(0, 11))
@@ -150,6 +153,7 @@ const App = () => {
         });
 
         const tvShowsByGenres = await Promise.all(genrePromises);
+        setTvShows(tvShowsByGenres);
 
         tvShowsByGenres.length > 11
           ? setTopTvShowsByGenres(tvShowsByGenres.slice(0, 11))
@@ -230,7 +234,13 @@ const App = () => {
             />
             <Route
               path="/content/:contentId"
-              element={<Content popularContent={popularContent} />}
+              element={
+                <Content
+                  popularContent={popularContent}
+                  movies={movies}
+                  tvShows={tvShows}
+                />
+              }
             />
             <Route path="/watchList" element={<WatchList />} />
             <Route path="/account" element={<Account />} />

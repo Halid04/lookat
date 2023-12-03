@@ -257,11 +257,11 @@ body {
 
 .slick-prev {
   left: 5% !important;
-  z-index: 1;
+  z-index: 1000;
 }
 .slick-next {
   right: 5% !important;
-  z-index: 1;
+  z-index: 1000;
 }
 .slick-prev:before,
 .slick-next:before {
@@ -272,6 +272,42 @@ body {
 }
 .slick-dots li button:before {
   color: var(--dots-color);
+}
+
+.slick-track {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.slick-list {
+  overflow: visible;
+}
+
+.slick-list:hover {
+  z-index: 100;
+}
+
+.sliderRow .slick-prev {
+  left: 2% !important;
+  z-index: 1000;
+  position: absolute;
+  color: var(--dots-color);
+  /* background-color: #000000b3;
+  background-size: 10px 10px;*/
+  width: 3rem;
+  height: 100%;
+}
+
+.sliderRow .slick-next {
+  right: 0% !important;
+  z-index: 1000;
+  position: absolute;
+  color: var(--dots-color);
+  /* background-color: #000000b3;
+  background-size: 10px 10px;*/
+  width: 3rem;
+  height: 100%;
 }
 
 .navBarContainer {
@@ -343,6 +379,120 @@ body {
   width: 78.5vw;
   height: 55vh;
   position: relative;
+}
+
+.sliderRow {
+  /* margin-left: 30px; */
+  width: 60rem;
+  height: 10rem;
+}
+
+.sliderRow a {
+  text-decoration: none;
+}
+
+/* kk */
+.card {
+  background-color: #101010;
+  height: 8rem;
+  width: 15rem;
+  transition: transform 0.2s;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 15px;
+  z-index: 100;
+}
+.card:hover {
+  height: 15rem;
+  transform: scale(1.1);
+}
+
+.cardHovered {
+  display: none;
+}
+
+.card:hover .cardHovered {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardPoster {
+  height: 8rem;
+  width: 15rem;
+  transition: 0.2s;
+}
+
+.cardPoster img {
+  width: 100%;
+  height: 100%;
+  transition: 0.2s;
+}
+
+.buttonsContainer {
+  height: 4rem;
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playBtn {
+  background-position: center left;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  width: 7.5rem;
+  height: 4rem;
+  margin-left: 15px;
+  transition: 0.2s;
+}
+
+.addBtn {
+  background-position: center right;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  width: 7.5rem;
+  height: 4rem;
+  margin-right: 15px;
+  transition: 0.2s;
+}
+
+.textsContainer {
+  height: 3rem;
+  width: 15rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.textsContainer p {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.textsContainer span {
+  transition: 0.2s;
+}
+
+.sliderLoading {
+  width: 60rem;
+  height: 10rem;
+  background-color: #101010;
+  margin-left: 1rem;
+}
+
+.altroCard {
+  background-color: #101010;
+  height: 8rem;
+  width: 15rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 700px) {
