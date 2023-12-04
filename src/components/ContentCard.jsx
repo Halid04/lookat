@@ -34,8 +34,8 @@ const ContentCard = ({
               title="Guarda Trailer"
               style={{
                 backgroundImage: theme
-                  ? "url(src/images/playDarkIcon.png)"
-                  : "url(src/images/playLightIcon.png)",
+                  ? "url(/src/images/playDarkIcon.png)"
+                  : "url(/src/images/playLightIcon.png)",
               }}
             ></div>
             <div
@@ -43,8 +43,8 @@ const ContentCard = ({
               title="Aggiungi a WatchList"
               style={{
                 backgroundImage: theme
-                  ? "url(src/images/plusDarkIcon.png)"
-                  : "url(src/images/plusLightIcon.png)",
+                  ? "url(/src/images/plusDarkIcon.png)"
+                  : "url(/src/images/plusLightIcon.png)",
               }}
             ></div>
           </div>

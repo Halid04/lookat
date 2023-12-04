@@ -7,6 +7,7 @@ import WatchList from "./pages/WatchList";
 import Account from "./pages/Account";
 import NavBar from "./components/NavBar";
 import Content from "./pages/Content";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
   const [popularContent, setPopularContent] = useState([]);
@@ -194,6 +195,7 @@ const App = () => {
           }}
         >
           <Routes>
+            <Route path="*" element={<NotFoundPage />} />
             <Route
               index
               element={
@@ -229,6 +231,7 @@ const App = () => {
                   tvShowsGenres={tVShowsGenres}
                   moviesByGenres={moviesByGenres}
                   tvShowByGenres={tVShowsByGenres}
+                  theme={darkTheme}
                 />
               }
             />
@@ -239,6 +242,7 @@ const App = () => {
                   popularContent={popularContent}
                   movies={movies}
                   tvShows={tvShows}
+                  theme={darkTheme}
                 />
               }
             />

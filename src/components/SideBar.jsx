@@ -131,7 +131,7 @@ const SideBar = ({ filmCategorie, serieCategorie, changeTheme, theme }) => {
                       color: theme
                         ? "var(--text-color-dark-theme)"
                         : "var(--text-color-light-theme)",
-                      opacity: selectedGenreId === item.id && "0.6",
+                      opacity: selectedGenreId === item.id ? "0.6" : "1",
                     }}
                   >
                     {item.name}

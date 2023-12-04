@@ -250,6 +250,133 @@ body {
   transform: translate(5%, -5%);
 }
 
+.contentPage {
+  filter: brightness(0.5);
+}
+
+.trailerBtnWatchListBtnWrap {
+  width: 18rem;
+  height: 2rem;
+  /* background-color: rgba(0, 0, 0, 0.514); */
+  position: absolute;
+  bottom: 5%;
+  left: 2%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.guardaTrailerBtn {
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  font-weight: bold;
+  width: 9.313rem;
+  height: 1.813rem;
+  cursor: pointer;
+  color: var(--primary-color-dark-theme);
+  transition: 0.2s;
+}
+.guardaTrailerBtn:hover {
+  opacity: 0.7;
+  transform: scale(1.05);
+}
+.guardaTrailerBtn:active {
+  transform: scale(0.9);
+}
+
+.watchListBtn {
+  background-color: rgba(0, 0, 0, 0.614);
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  font-weight: bold;
+  width: 9.313rem;
+  height: 1.813rem;
+  cursor: pointer;
+  color: var(--text-color-dark-theme);
+  transition: 0.2s;
+}
+.watchListBtn:hover {
+  transform: scale(1.05);
+  background-color: #ffffff;
+  color: var(--primary-color-dark-theme);
+}
+.watchListBtn:active {
+  transform: scale(0.9);
+}
+
+.genreList {
+  width: 100%;
+  height: 3rem;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.genreList div {
+  display: inline-flex;
+  padding: 4px 17px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 31px;
+  height: 1.1rem;
+  margin-left: 1rem;
+  transition: 0.2s;
+}
+.genreList div:hover {
+  background-color: rgba(255, 255, 255, 0.144);
+}
+
+.descrizioneContainer {
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+}
+
+.contenOverview {
+  margin-left: 1rem;
+}
+
+.infoContainer {
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.castContainer {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.voteContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.voteContainer div {
+  font-size: 3em;
+}
+
+.languageContainer {
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
 .sliderSlick {
   width: 78.5vw;
   height: 55vh;
@@ -457,6 +584,7 @@ body {
   height: 4rem;
   margin-right: 15px;
   transition: 0.2s;
+  z-index: 10000;
 }
 
 .textsContainer {
@@ -493,6 +621,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.genrePage {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 19.5% 19.5% 19.5% 19.5%;
+  margin-left: 1rem;
+  margin-bottom: 7rem;
 }
 
 @media screen and (max-width: 700px) {
