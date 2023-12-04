@@ -8,6 +8,7 @@ import Account from "./pages/Account";
 import NavBar from "./components/NavBar";
 import Content from "./pages/Content";
 import NotFoundPage from "./pages/NotFoundPage";
+import ChartPage from "./pages/ChartPage";
 
 const App = () => {
   const [popularContent, setPopularContent] = useState([]);
@@ -248,6 +249,16 @@ const App = () => {
             />
             <Route path="/watchList" element={<WatchList />} />
             <Route path="/account" element={<Account />} />
+            <Route
+              path="/chart"
+              element={
+                <ChartPage
+                  popularContent={popularContent}
+                  movies={moviesByGenres}
+                  tvshows={tVShowsByGenres}
+                />
+              }
+            />
           </Routes>
         </div>
       </div>
