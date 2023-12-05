@@ -260,7 +260,10 @@ const App = () => {
                 />
               }
             />
-            <Route path="/searchPage" element={<SearchPage />} />
+            <Route
+              path="/searchPage"
+              element={<SearchPage theme={darkTheme} closePopup={closePopup} />}
+            />
             <Route path="/account" element={<Account />} />
             <Route
               path="/chart"
