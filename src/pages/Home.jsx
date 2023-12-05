@@ -14,6 +14,7 @@ const Home = ({
   moviesByGenres,
   tvShowsByGenres,
   theme,
+  closePopup,
 }) => {
   const [categorie, setCategorie] = useState([]);
   const [contentByGenres, setContentByGenres] = useState({});
@@ -154,6 +155,8 @@ const Home = ({
                     }
                     genere={category.name}
                     contentID={item.id}
+                    contentName={item?.name ? item?.name : item?.title}
+                    closePopup={closePopup}
                   />
                 ))}
               </Slider>

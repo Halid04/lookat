@@ -9,6 +9,7 @@ const GenresPage = ({
   moviesByGenres,
   tvShowByGenres,
   theme,
+  closePopup,
 }) => {
   const { genreId } = useParams();
   const [movieGenreIdAndName, setMovieGenreIdAndName] = useState(null);
@@ -93,7 +94,7 @@ const GenresPage = ({
       ) {
         contents = [...tvShowOfGenre.tvShows];
       }
-      console.log("contents", contents);
+      // console.log("contents", contents);
       setContents(contents);
     };
     combineContent();
@@ -131,6 +132,8 @@ const GenresPage = ({
                   : tvShowGenreIdAndName?.name
               }
               contentID={item.id}
+              contentName={item?.name ? item?.name : item?.title}
+              closePopup={closePopup}
             />
           ))}
         </div>

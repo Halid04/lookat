@@ -7,6 +7,8 @@ const ContentCard = ({
   annoUscita,
   genere,
   contentID,
+  contentName,
+  closePopup,
 }) => {
   return (
     <div className="sliderRow">
@@ -29,18 +31,24 @@ const ContentCard = ({
         </Link>
         <div className="cardHovered">
           <div className="buttonsContainer">
-            <div
+            <Link
+              to={`/content/${contentID}`}
               className="playBtn"
               title="Guarda Trailer"
+              onClick={closePopup}
               style={{
                 backgroundImage: theme
                   ? "url(/src/images/playDarkIcon.png)"
                   : "url(/src/images/playLightIcon.png)",
+                textDecoration: "none",
               }}
-            ></div>
+            ></Link>
             <div
               className="addBtn"
               title="Aggiungi a WatchList"
+              onClick={() => {
+                alert("Aggiunto a watchList(per finta)");
+              }}
               style={{
                 backgroundImage: theme
                   ? "url(/src/images/plusDarkIcon.png)"
@@ -61,6 +69,7 @@ const ContentCard = ({
               </span>{" "}
               - {annoUscita} - {genere}
             </p>
+            <p style={{ opacity: "0.8" }}>{contentName}</p>
           </div>
         </div>
       </div>

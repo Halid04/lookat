@@ -51,7 +51,7 @@ const SideBar = ({ filmCategorie, serieCategorie, changeTheme, theme }) => {
       ></Link>
       <div className="accountWhatchListWrap">
         <Link
-          to={`/watchList`}
+          to={`/searchPage`}
           className="watchListLinkContainer"
           style={{
             textDecoration: "none",
@@ -61,8 +61,8 @@ const SideBar = ({ filmCategorie, serieCategorie, changeTheme, theme }) => {
             className="watchListIcon"
             style={{
               backgroundImage: theme
-                ? "url(/src/images/watchListIcon.png)"
-                : "url(/src/images/watchListLightIcon.png)",
+                ? "url(/src/images/searchIconLight.png)"
+                : "url(/src/images/searchIconDark.png)",
             }}
           ></div>
           <p
@@ -73,7 +73,7 @@ const SideBar = ({ filmCategorie, serieCategorie, changeTheme, theme }) => {
                 : "var(--text-color-light-theme)",
             }}
           >
-            WatchList
+            Cerca Contenuto
           </p>
         </Link>
 

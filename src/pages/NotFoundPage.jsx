@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const NotFoundPage = () => {
   return (
     <div
@@ -7,6 +9,7 @@ const NotFoundPage = () => {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        gap: "1rem",
       }}
     >
       <h1>Error 404: Page Not Found</h1>
@@ -16,6 +19,10 @@ const NotFoundPage = () => {
           type="video/mp4"
         />
       </video>
+
+      <Link to={"/chart"}>
+        <button className="guardaTrailerBtn">Vedere Grafici</button>
+      </Link>
     </div>
   );
 };

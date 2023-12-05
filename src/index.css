@@ -347,7 +347,7 @@ body {
   /* background-color: red; */
   display: flex;
   justify-content: space-between;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
 }
 
 .castContainer {
@@ -533,7 +533,7 @@ body {
   z-index: 100;
 }
 .card:hover {
-  height: 15rem;
+  height: 16rem;
   transform: scale(1.1);
 }
 
@@ -591,8 +591,9 @@ body {
   height: 3rem;
   width: 15rem;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
   /* background-color: red; */
 }
 
@@ -631,22 +632,62 @@ body {
   margin-bottom: 7rem;
 }
 
-.chartPopularContent {
-  width: 80%;
-  height: 30rem;
-  background-color: red;
-}
-
-.chartMovies {
-  width: 80%;
-  height: 30rem;
-  background-color: blue;
-}
-
+.chartPopularContent,
+.chartMovies,
 .chartTvShows {
   width: 80%;
   height: 30rem;
-  background-color: green;
+  background: rgba(0, 0, 0, 0.39);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.7px);
+  -webkit-backdrop-filter: blur(9.7px);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.ReviewContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.correlati {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 19.5% 19.5% 19.5% 19.5%;
+  margin-left: 1rem;
+  margin-bottom: 7rem;
+}
+
+.popupDialog {
+  background-color: var(--primary-color-dark-theme);
+  width: 40rem;
+}
+
+.p-dialog-title {
+  font-weight: bold;
+  font-size: 1.875em;
+  padding: 10px 10px;
+}
+
+.p-dialog-header-icons {
+  background-image: url(/src/images/closeBtnLight.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1.313rem;
+  height: 1.313rem;
+  margin: 10px;
+}
+
+.p-icon {
+  visibility: hidden;
 }
 
 @media screen and (max-width: 700px) {

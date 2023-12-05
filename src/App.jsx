@@ -3,12 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import GenresPage from "./pages/GenresPage";
 import SideBar from "./components/SideBar";
-import WatchList from "./pages/WatchList";
 import Account from "./pages/Account";
 import NavBar from "./components/NavBar";
 import Content from "./pages/Content";
 import NotFoundPage from "./pages/NotFoundPage";
 import ChartPage from "./pages/ChartPage";
+import SearchPage from "./pages/searchPage";
 
 const App = () => {
   const [popularContent, setPopularContent] = useState([]);
@@ -22,6 +22,7 @@ const App = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [movies, setMovies] = useState([]);
   const [tvShows, setTvShows] = useState([]);
+  const [popupVisible, setPopupVisible] = useState(false);
   const breakpoint = 700;
 
   const handleWindowResize = () => {
@@ -42,6 +43,11 @@ const App = () => {
   const changeTheme = () => {
     setDarkTheme(!darkTheme);
     return darkTheme;
+  };
+
+  const closePopup = () => {
+    setPopupVisible(!popupVisible);
+    return popupVisible;
   };
 
   const options = {
@@ -124,6 +130,7 @@ const App = () => {
           ? setTopMoviesByGenres(moviesByGenres.slice(0, 11))
           : setTopMoviesByGenres(moviesByGenres);
 
+        // console.log(moviesByGenres);
         setMoviesByGenres(moviesByGenres);
       } catch (error) {
         console.error(error);
@@ -155,6 +162,7 @@ const App = () => {
         });
 
         const tvShowsByGenres = await Promise.all(genrePromises);
+        // console.log(tvShowsByGenres);
         setTvShows(tvShowsByGenres);
 
         tvShowsByGenres.length > 11
@@ -207,6 +215,7 @@ const App = () => {
                   moviesByGenres={moviesByGenres}
                   tvShowsByGenres={tVShowsByGenres}
                   theme={darkTheme}
+                  closePopup={closePopup}
                 />
               }
             />
@@ -221,6 +230,7 @@ const App = () => {
                   moviesByGenres={moviesByGenres}
                   tvShowsByGenres={tVShowsByGenres}
                   theme={darkTheme}
+                  closePopup={closePopup}
                 />
               }
             />
@@ -233,6 +243,7 @@ const App = () => {
                   moviesByGenres={moviesByGenres}
                   tvShowByGenres={tVShowsByGenres}
                   theme={darkTheme}
+                  closePopup={closePopup}
                 />
               }
             />
@@ -244,10 +255,12 @@ const App = () => {
                   movies={movies}
                   tvShows={tvShows}
                   theme={darkTheme}
+                  closePopup={closePopup}
+                  popupVisible={popupVisible}
                 />
               }
             />
-            <Route path="/watchList" element={<WatchList />} />
+            <Route path="/searchPage" element={<SearchPage />} />
             <Route path="/account" element={<Account />} />
             <Route
               path="/chart"
@@ -256,6 +269,7 @@ const App = () => {
                   popularContent={popularContent}
                   movies={moviesByGenres}
                   tvshows={tVShowsByGenres}
+                  theme={darkTheme}
                 />
               }
             />
